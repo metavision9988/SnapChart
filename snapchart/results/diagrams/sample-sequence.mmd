@@ -1,0 +1,35 @@
+sequenceDiagram
+    participant 사용자
+    participant 클라이언트
+    participant API Gateway
+    participant 인증 서버
+    participant 백엔드 서버
+    participant 데이터베이스
+
+    사용자->>클라이언트: API 호출 요청
+    activate 클라이언트
+    클라이언트->>API Gateway: API 요청 전송
+    deactivate 클라이언트
+    activate API Gateway
+    API Gateway->>인증 서버: 인증 요청
+    activate 인증 서버
+    인증 서버->>인증 서버: 인증 확인
+    인증 서버-->>API Gateway: 인증 응답
+    deactivate 인증 서버
+    alt 인증 성공
+        API Gateway->>백엔드 서버: API 요청 전달
+        activate 백엔드 서버
+        백엔드 서버->>데이터베이스: 데이터 요청
+        activate 데이터베이스
+        데이터베이스-->>백엔드 서버: 데이터 응답
+        deactivate 데이터베이스
+        백엔드 서버-->>API Gateway: API 응답
+        deactivate 백엔드 서버
+        API Gateway-->>클라이언트: API 응답 반환
+    else 인증 실패
+        API Gateway-->>클라이언트: 인증 실패 응답
+    end
+    deactivate API Gateway
+    activate 클라이언트
+    클라이언트-->>사용자: API 응답 표시
+    deactivate 클라이언트

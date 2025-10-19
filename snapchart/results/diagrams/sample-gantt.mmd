@@ -1,0 +1,21 @@
+gantt
+    dateFormat  YYYY-MM-DD
+    title 웹사이트 리뉴얼 프로젝트
+
+    section 기획
+    요구사항 정의 및 분석       :a1, 2024-01-01, 2024-01-08
+    정보 구조 설계              :a2, after a1, 13d
+
+    section 디자인
+    UI 디자인                  :b1, after a2, 21d
+    UX 디자인                  :b2, after a2, 21d
+
+    section 개발
+    프론트엔드 개발              :c1, after b1, 28d
+    백엔드 개발                :c2, after b1, 28d
+
+    section 테스트
+    통합 테스트                :d1, after c1, 14d
+
+    section 배포
+    배포 및 안정화             :e1, after d1, 7d

@@ -1,0 +1,51 @@
+erDiagram
+    User {
+        string userID PK
+        string username
+        string password
+        string email
+        string address
+        string phoneNumber
+        string registrationDate
+    }
+
+    Product {
+        string productID PK
+        string productName
+        string description
+        float price
+        int stockQuantity
+        string category
+    }
+
+    Order {
+        string orderID PK
+        string userID FK
+        string orderDate
+        string shippingAddress
+        string orderStatus
+        float totalAmount
+    }
+
+    OrderItem {
+        string orderItemID PK
+        string orderID FK
+        string productID FK
+        int quantity
+        float price
+    }
+
+    Review {
+        string reviewID PK
+        string productID FK
+        string userID FK
+        int rating
+        string comment
+        string reviewDate
+    }
+
+    User ||--o{ Order : places
+    Order ||--o{ OrderItem : contains
+    Product ||--o{ OrderItem : "is part of"
+    Product ||--o{ Review : has
+    User ||--o{ Review : writes

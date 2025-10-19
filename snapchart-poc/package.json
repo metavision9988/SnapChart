@@ -1,0 +1,27 @@
+{
+  "name": "snapchart-poc",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "setup": "bun src/00-setup-check.ts",
+    "test:ai": "bun src/01-ai-basic.test.ts",
+    "test:diagrams": "bun src/02-ai-diagrams.test.ts",
+    "test:mermaid": "bun src/03-mermaid-render.test.ts",
+    "test:cost": "bun src/04-cost-analysis.ts",
+    "test:all": "bun src/05-integration.test.ts",
+    "poc": "bun run setup && bun run test:all"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "@google/generative-ai": "^0.21.0",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.5",
+    "mermaid": "^10.9.0",
+    "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.0"
+  }
+}
